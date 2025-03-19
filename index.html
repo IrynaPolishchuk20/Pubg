@@ -8,7 +8,34 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-    
+    <h1>PUBG Shooting Game</h1>
+
+    <div class="setting">
+        <label for="helmetLevel">Helmet level:</label>
+        <select id="helmetLevel">
+            <option value="0">NO Level</option>
+            <option value="1">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+        </select>
+        <br>
+        <label for="vestLevel">Vest level:</label>
+        <select  id="vestLevel">
+            <option value="0">NO Vest</option>
+            <option value="1">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+        </select>
+        <br>
+        <button id="startGame">Start Game</button>
+    </div>
+
+    <p id="health">Health: 100</p>
+    <p id="damageInfo">Cleack on the target to shoot!</p>
+
+    <div id="gameContainer">
+        <img id="targetImage" src="./img/best-new-pubg-png-player-unknown-battleground-ps4-11562852461bhgjqyotfc-removebg-preview.png" alt="Pubg Character">
+    </div>
     <script src="./js/main.js"></script>
 </body>
 </html>
