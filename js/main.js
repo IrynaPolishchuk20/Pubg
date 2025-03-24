@@ -26,6 +26,7 @@ class Player{
 
         if (this.health <= 0) {
             document.getElementById('damageInfo').innerText = 'Player Knocked!'
+            // document.getElementById('targetImage').src = 'img/knocked.jpg'
             document.getElementById('targetImage').style.opacity = '0.4'
         }
     }
@@ -36,6 +37,7 @@ class Game{
         const helmetLevel = parseInt(document.getElementById('helmetLevel').value)
         const vestLevel = parseInt(document.getElementById('vestLevel').value)
         this.player = new Player(helmetLevel, vestLevel)
+        this.weapon = document.getElementById('weapon').value
 
         document.getElementById('damageInfo').innerText = 'Cleack on the target to shoot!'
         document.getElementById('targetImage').style.opacity = '1'
@@ -47,23 +49,33 @@ class Game{
         let y = event.offsetY
         let bodyPart = this.getBodyPart(x,y)
 
+        let baseDamage = {
+            'Beryl_M762': 47,
+            'Mk47_Mutant': 49,
+            'R45': 54
+        }[this.weapon]
+
         let damageMap = {
-            'head':100,
-            'body': 30,
-            'legs': 20,
-            'arms': 15
-        }
-        if(bodyPart) this.player.takeDamage(damageMap[bodyPart], bodyPart)
+            'head':5,
+            'body': 1.5,
+            'legs': 1,
+            'arms': 0.8
+        }[bodyPart] 
+
+        if(bodyPart) this.player.takeDamage(baseDamage * damageMap, bodyPart)
     }
 
     getBodyPart(x,y){
         console.log(`x:${x} y:${y}`);
         if(y > 1 && y < 50 && x > 115 && x < 170) return 'head'
-        if(y < 50 && y < 160 && x > 128 && x < 185) return 'body'
-        if(y < 160 && y < 302 && x > 116 && x < 130) return 'legs'
-
-        if(y < 65 && y < 185 && x > 65 && x < 120) return 'arms'
-        if(y < 65 && y < 185 && x > 65 && x < 220) return 'arms'
+        if(y > 50 && y < 160 && x > 120 && x < 185) return 'body'
+        if(y > 160 && y < 302 && x > 116 && x < 130) return 'legs'
+        if(y > 160 && y < 302 && x > 165 && x < 200) return 'legs'
+        if(y > 65 && y < 185 && x > 65 && x < 85) return 'arms'
+        if(y > 65 && y < 185 && x > 80 && x < 100) return 'arms'
+        if(y > 65 && y < 185 && x > 65 && x < 120) return 'arms'
+        if(y > 65 && y < 185 && x > 65 && x < 120) return 'arms'
+        if(y > 65 && y < 185 && x > 200 && x < 230) return 'arms'
         return
 
     }

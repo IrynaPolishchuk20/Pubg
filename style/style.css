@@ -17,7 +17,13 @@ p{
 
 select{
     margin: 10px;
-    width: 100px;
+    width: 130px;
+    font-size: 16px;
+    text-align: center;
+}
+
+label{
+    font-size: 28px;
 }
 
 button{
@@ -25,8 +31,13 @@ button{
     height: 50px;
     border-radius: 15px;
     border: none;
-    background-color: darkgreen;
+    background-color: rgb(156, 182, 156);
     font-size: 25px;
+}
+
+button:hover{
+    background-color: white;
+    color: black;
 }
 
 #gameContainer{
